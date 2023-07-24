@@ -1,15 +1,25 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
     run: nginx
   name: nginx
 spec:
-  containers:
-  - image: ningx
-    name: nginx
-    resources: {}
-  dnsPolicy: ClusterFirst
-  restartPolicy: Always
-status: {}
+  replicas: 1
+  selector:
+    matchLabels:
+      run: nginx
+  template:
+    metadata:
+      labels:
+        run: nginx
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        resources:
+          # 리소스 제한을 설정하려면 여기에 적절한 값을 넣으세요.
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      # 추가적인 설정들을 여기에 추가할 수 있습니다.
