@@ -21,8 +21,8 @@
     <%-- 비상연락망 전화번호 입력 폼 --%>
     <form method="post" action="<%=request.getContextPath()%>/Emergency.jsp">
       <div class="form-group">
-        <label for="emergencyNumber">전화번호:</label>
-        <input type="text" id="emergencyNumber" name="emergencyNumber" required>
+        <label for="Emergency">전화번호:</label>
+        <input type="text" id="Emergency" name="Emergency" required>
       </div>
       <button type="submit" class="save-button">저장</button>
     </form>
