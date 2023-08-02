@@ -17,6 +17,10 @@
         <form method="post" action="<%=request.getContextPath()%>/afloginmain.jsp?action=logout">
           <button type="submit" class="logout-button">Logout</button>
         </form>
+      <% } else { %>
+        <%-- If there is no user ID in session, show login button --%>
+        <a href="login.jsp" class="login-button">Login</a>
+      <% } %>
     </div>
 
     <!-- split top 70% horizontally -->
