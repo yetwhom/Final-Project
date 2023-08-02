@@ -2,57 +2,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>비상연락망 설정</title>
-  <link rel="stylesheet" href="style.css"> <!-- style.css 파일에 대한 링크 추가 -->
+  <title>Emergency contact network settings</title>
+  <link rel="stylesheet" href="style.css"> <!-- Add a link to the style.css file -->
 </head>
 <body>
   <div class="emergency-container">
-    <h2>비상연락망 설정</h2>
+    <h2>Emergency contact network settings</h2>
 
-    <%-- 비상연락망 전화번호 입력 폼 --%>
+    <%-- Emergency contact phone number input form --%>
     <form method="post" action="<%=request.getContextPath()%>/Emergency.jsp">
       <div class="form-group">
-        <label for="Emergency">전화번호:</label>
+        <label for="Emergency">Phone Number:</label>
         <input type="text" id="Emergency" name="Emergency" required>
       </div>
-      <button type="submit" class="save-button">저장</button>
-      <%-- 이전으로 버튼을 클릭하면 afloginmain.jsp 페이지로 이동하도록 함 --%>
-      <a href="afloginmain.jsp" class="return-button">이전으로</a>
+      <button type="submit" class="save-button">Save</button>
+      <%-- Click the Back button to go to the afloginmain.jsp page --%>
+      <a href="afloginmain.jsp" class="return-button">Previous</a>
     </form>
 
-    <%-- 비상연락망 전화번호를 데이터베이스에 저장하는 JSP 코드 시작 --%>
-    <%
-      if (request.getMethod().equalsIgnoreCase("post")) {
-        String Emergency = request.getParameter("Emergency");
-
-        // 세션에 저장된 사용자 ID 가져오기
-        String userId = (String) session.getAttribute("userId");
-
-        // 데이터베이스에 비상연락망 전화번호를 저장하는 로직 작성 (예시로는 user 테이블에 필드를 추가하여 저장하는 것으로 가정)
+    <%-- Start JSP code to save emergency phone number to database --%>
+    <%!
+      void saveEmergencyPhoneNumber(String userId, String emergencyPhoneNumber) {
+        // Develop logic to save emergency contact phone number in database (As an example, it is assumed that a field is added and stored in the user table)
         try {
-          // RDS 연결 정보 설정
+          // set RDS connection information
           String dbURL = "jdbc:mysql://masterdb.cjjvm5nexheu.ap-southeast-1.rds.amazonaws.com:3306/team3";
-          String dbUser = "root"; // RDS 사용자 ID로 수정
-          String dbPassword = "Qwer1234!"; // RDS 사용자 비밀번호로 수정
+          String dbUser = "root"; // Modify with RDS user ID
+          String dbPassword = "Qwer1234!"; // modified with RDS user password
 
           Class.forName("com.mysql.jdbc.Driver");
           Connection connection = DriverManager.getConnection(dbURL, dbUser, dbPassword);
 
-          // 사용자 테이블에서 사용자 ID에 해당하는 레코드 업데이트
+          // Update the record corresponding to the user ID in the users table
           String updateQuery = "UPDATE user SET Emergency=? WHERE ID=?";
           PreparedStatement updateStatement = connection.prepareStatement(updateQuery);
-          updateStatement.setString(1, Emergency);
+          updateStatement.setString(1, emergencyPhoneNumber);
           updateStatement.setString(2, userId);
           updateStatement.executeUpdate();
 
           updateStatement.close();
           connection.close();
         } catch (Exception e) {
-          out.println("오류가 발생했습니다: " + e.getMessage());
+          e.printStackTrace();
         }
       }
     %>
-    <%-- 비상연락망 전화번호를 데이터베이스에 저장하는 JSP 코드 끝 --%>
+
+    <%
+      if (request.getMethod().equalsIgnoreCase("post")) {
+        String emergencyPhoneNumber = request.getParameter("Emergency");
+
+        // Get user ID stored in session
+        String userId = (String) session.getAttribute("userId");
+
+        // Save emergency phone number
+        saveEmergencyPhoneNumber(userId, emergencyPhoneNumber);
+      }
+    %>
+    <%-- end of JSP code to save emergency phone number to database --%>
   </div>
 </body>
 </html>
