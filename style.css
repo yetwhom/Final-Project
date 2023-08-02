@@ -75,13 +75,32 @@ body, html {
   
   /* Additional styles go here. */
   
+  /* 로고 이미지 스타일 조정 */
+  .box-1 img {
+    max-height: 100%; /* 로고 이미지가 10% 영역을 넘지 않도록 최대 높이 설정 */
+    max-width: 100%; /* 로고 이미지의 최대 너비 설정 */
+    display: block; /* 이미지가 다른 요소들과 정상적으로 정렬되도록 설정 */
+    margin: 0 auto; /* 이미지를 수평 가운데로 정렬 */
+  }
+  
+  /* 로그인 버튼 스타일 조정 */
+  .login-button {
+    text-decoration: none;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-left: auto; /* 로그인 버튼을 오른쪽으로 이동시킴 */
+  }
+  
   /* 로그아웃 버튼 스타일 조정 */
   .logout-button {
-    position: absolute; /* 절대 위치를 설정하기 위해 추가 */
-    top: 5px; /* 오른쪽 상단에서 위쪽으로 5px만큼 띄우기 */
-    right: 10px; /* 오른쪽 상단에서 오른쪽으로 10px만큼 띄우기 */
-    padding: 5px 10px; /* 버튼 내용에 맞춰 크기 조정 */
+    position: absolute;
+    top: 50%; /* 로그인 버튼의 중앙에 배치 */
+    right: 10px;
+    padding: 5px 10px;
     font-size: 16px;
-    line-height: 20px; /* 버튼 내용에 맞춰 크기 조정 */
+    line-height: 20px;
+    transform: translateY(-50%); /* 세로 중앙 정렬을 위해 요소의 높이의 반만큼 위로 이동 */
   }
   
