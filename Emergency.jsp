@@ -9,8 +9,11 @@
   <div class="emergency-container">
     <h2>Emergency contact network settings</h2>
 
+    <%-- Get the user ID from the parameter passed in the URL --%>
+    <% String userId = request.getParameter("userId"); %>
+
     <%-- Emergency contact phone number input form --%>
-    <form method="post" action="<%=request.getContextPath()%>/Emergency.jsp">
+    <form method="post" action="<%=request.getContextPath()%>/Emergency.jsp?userId=<%=userId%>">
       <div class="form-group">
         <label for="Emergency">Phone Number:</label>
         <input type="text" id="Emergency" name="Emergency" value="<%= currentEmergencyPhoneNumber %>" required>
@@ -23,62 +26,37 @@
     <%-- Start JSP code to save emergency phone number to database --%>
     <%!
       void saveEmergencyPhoneNumber(String userId, String emergencyPhoneNumber) {
-        try {
-          // set RDS connection information
-          String dbURL = "jdbc:mysql://masterdb.cjjvm5nexheu.ap-southeast-1.rds.amazonaws.com:3306/team3";
-          String dbUser = "root"; // Modify with RDS user ID
-          String dbPassword = "Qwer1234!"; // modified with RDS user password
-
-          Class.forName("com.mysql.jdbc.Driver");
-          Connection connection = DriverManager.getConnection(dbURL, dbUser, dbPassword);
-
-          // Update the record corresponding to the user ID in the users table
-          String updateQuery = "UPDATE user SET Emergency=? WHERE ID=?";
-          PreparedStatement updateStatement = connection.prepareStatement(updateQuery);
-          updateStatement.setString(1, emergencyPhoneNumber);
-          updateStatement.setString(2, userId);
-          updateStatement.executeUpdate();
-
-          updateStatement.close();
-          connection.close();
-        } catch (Exception e) {
-          e.printStackTrace();
-        }
+        // ... (이하 생략)
       }
     %>
 
-    <%
-      // Get user ID stored in session
-      String userId = (String) session.getAttribute("userId");
+    <%-- Get the current emergency phone number from the database using the received user ID --%>
+    <% String currentEmergencyPhoneNumber = ""; %>
+    <% try {
+      // set RDS connection information
+      String dbURL = "jdbc:mysql://masterdb.cjjvm5nexheu.ap-southeast-1.rds.amazonaws.com:3306/team3";
+      String dbUser = "root"; // Modify with RDS user ID
+      String dbPassword = "Qwer1234!"; // modified with RDS user password
 
-      // Get the current emergency phone number from the database
-      String currentEmergencyPhoneNumber = "";
+      Class.forName("com.mysql.jdbc.Driver");
+      Connection connection = DriverManager.getConnection(dbURL, dbUser, dbPassword);
 
-      try {
-        // set RDS connection information
-        String dbURL = "jdbc:mysql://masterdb.cjjvm5nexheu.ap-southeast-1.rds.amazonaws.com:3306/team3";
-        String dbUser = "root"; // Modify with RDS user ID
-        String dbPassword = "Qwer1234!"; // modified with RDS user password
+      // Retrieve the emergency phone number from the database
+      String selectQuery = "SELECT Emergency FROM user WHERE ID=?";
+      PreparedStatement selectStatement = connection.prepareStatement(selectQuery);
+      selectStatement.setString(1, userId);
+      ResultSet resultSet = selectStatement.executeQuery();
 
-        Class.forName("com.mysql.jdbc.Driver");
-        Connection connection = DriverManager.getConnection(dbURL, dbUser, dbPassword);
-
-        // Retrieve the emergency phone number from the database
-        String selectQuery = "SELECT Emergency FROM user WHERE ID=?";
-        PreparedStatement selectStatement = connection.prepareStatement(selectQuery);
-        selectStatement.setString(1, userId);
-        ResultSet resultSet = selectStatement.executeQuery();
-
-        if (resultSet.next()) {
-          currentEmergencyPhoneNumber = resultSet.getString("Emergency");
-        }
-
-        resultSet.close();
-        selectStatement.close();
-        connection.close();
-      } catch (Exception e) {
-        e.printStackTrace();
+      if (resultSet.next()) {
+        currentEmergencyPhoneNumber = resultSet.getString("Emergency");
       }
+
+      resultSet.close();
+      selectStatement.close();
+      connection.close();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
     %>
 
     <%-- Save the modified emergency phone number --%>
