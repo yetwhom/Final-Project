@@ -26,7 +26,7 @@
       Connection connection = DriverManager.getConnection(dbURL, dbUser, dbPassword);
 
       // 사용자 정보 조회
-      String query = "SELECT * FROM user WHERE ID=?";
+      String query = "SELECT name, address, address1, phonenumber, Emergency FROM user WHERE ID=?";
       PreparedStatement preparedStatement = connection.prepareStatement(query);
       preparedStatement.setString(1, userId);
       ResultSet resultSet = preparedStatement.executeQuery();
@@ -42,27 +42,12 @@
         %>
         <form method="post">
           <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" value="<%= name %>" readonly>
-          </div>
-          <div class="form-group">
-            <label for="address">Address:</label>
-            <input type="text" id="address" name="address" value="<%= address %>" readonly>
-          </div>
-          <div class="form-group">
-            <label for="address1">Address1:</label>
-            <input type="text" id="address1" name="address1" value="<%= address1 %>" readonly>
-          </div>
-          <div class="form-group">
-            <label for="phoneNumber">Phone Number:</label>
-            <input type="text" id="phoneNumber" name="phoneNumber" value="<%= phoneNumber %>" readonly>
-          </div>
-          <div class="form-group">
             <label for="emergencyContact">Emergency Contact:</label>
             <input type="text" id="emergencyContact" name="emergencyContact" value="<%= emergencyContact %>" required>
           </div>
-          <button type="submit" class="update-button" disabled>Update</button> <!-- 비상 연락처 외 다른 정보는 수정할 수 없음 -->
+          <button type="submit" class="update-button">Update</button> <!-- 비상 연락처 외 다른 정보는 수정할 수 없음 -->
         </form>
+        <a href="afloginmain.jsp" class="return-button">돌아가기</a> <!-- "돌아가기" 버튼을 누를 때 afloginmain.jsp로 이동 -->
         <%
       } else {
         out.println("사용자 정보를 찾을 수 없습니다.");
