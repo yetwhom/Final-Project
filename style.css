@@ -1,0 +1,83 @@
+/* style.css */
+
+/* 공통 스타일 */
+body, html {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .container {
+    height: 100%;
+    display: flex;
+    flex-direction: column; /* 위에서 아래로 정렬 */
+  }
+  
+  .box {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  /* Adjust box height according to color scale */
+  .box-1 {
+    height: 10%; /* 높이로 변경 */
+    background-color: rgb(206, 33, 33);
+    position: relative; /* 부모 요소를 기준으로 자식 요소를 배치하기 위해 추가 */
+  }
+  
+  /* Divide the 70% area in half in the middle */
+  .box-2 {
+    height: 70%; /* 높이로 변경 */
+    background-color: rgb(35, 35, 190);
+    display: flex;
+    flex-direction: row; /* 왼쪽과 오른쪽으로 정렬 */
+  }
+  
+  /* 왼쪽 50% */
+  .box-2-left {
+    flex-grow: 1;
+    background-color: rgba(48, 134, 70, 0.5); /* 반투명 스타일로 표시 */
+  }
+  
+  /* 오른쪽 50% */
+  .box-2-right {
+    flex-grow: 1;
+    background-color: rgba(192, 30, 233, 0.5); /* 반투명 스타일로 표시 */
+  }
+  
+  /* Divide the 20% area into three on both sides */
+  .box-3 {
+    height: 20%; /* 높이로 변경 */
+    background-color: green;
+    display: flex;
+    flex-direction: row; /* 왼쪽과 오른쪽으로 정렬 */
+  }
+  
+  /* 왼쪽 33.33% */
+  .box-3-left {
+    flex-grow: 1;
+    background-color: rgba(0, 128, 128, 0.5); /* 반투명 스타일로 표시 */
+  }
+  
+  /* 중앙 33.33% */
+  .box-3-middle {
+    flex-grow: 1;
+    background-color: rgba(255, 165, 0, 0.5); /* 반투명 스타일로 표시 */
+  }
+  
+  /* 오른쪽 33.33% */
+  .box-3-right {
+    flex-grow: 1;
+    background-color: rgba(128, 0, 128, 0.5); /* 반투명 스타일로 표시 */
+  }
+  
+  /* Additional styles go here. */
+  
+  /* 로그아웃 버튼 스타일 조정 */
+  .logout-button {
+    position: absolute; /* 절대 위치를 설정하기 위해 추가 */
+    top: 5px; /* 오른쪽 모서리에서 위쪽으로 5px만큼 띄우기 */
+    right: 10
+  

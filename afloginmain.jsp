@@ -91,7 +91,7 @@
   <%-- start logout handling JSP code --%>
   <% if (request.getParameter("action") != null && request.getParameter("action").equals("logout")) {
     // handle logout: session invalidation (logout)
-    session. invalidate();
+    session.invalidate();
     // go to index.jsp
     response.sendRedirect("index.jsp");
   } %>
