@@ -11,8 +11,8 @@
     <% 
         HttpSession session = request.getSession();
         boolean loggedIn = session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn");
-        String id = (String) session.getAttribute("id");
-        String emergencyValue = (String) session.getAttribute("emergency");
+        String ID = (String) session.getAttribute("ID");
+        String EmergencyValue = (String) session.getAttribute("Emergency");
         
         if (!loggedIn) {
             // 로그인이 안 된 경우 로그인 페이지로 이동
@@ -22,7 +22,7 @@
     %>
             <h1>환영합니다, <%= id %>님!</h1>
             <h2>Emergency 설정</h2>
-            <form action="updateEmergency.jsp" method="post">
+            <form action="Emergency.jsp" method="post">
                 <label for="emergencyValue">Emergency 값:</label>
                 <input type="text" id="emergencyValue" name="emergencyValue" value="<%= emergencyValue %>">
                 <input type="submit" value="변경">
@@ -34,7 +34,7 @@
                 out.println("<p>Emergency 값이 업데이트되었습니다. 현재 Emergency 값: " + updatedEmergency + "</p>");
             }
     %>
-            <a href="logout.jsp">로그아웃</a>
+            <a href="/afloginmain.jsp">돌아가기</a>
     <% 
         }
     %>
