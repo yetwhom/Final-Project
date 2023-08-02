@@ -40,7 +40,11 @@
               <td value="top">
                 <table>
                   <tbody>
-                    <tr><td height="10"> <a href="/notice;no=3">What to do in case of disaster</a></td></tr>
+                    <tr>
+                      <td height="10">
+                        <a href="javascript:void(0)" onclick="showPopup()">What to do in case of disaster</a>
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </td>
@@ -56,7 +60,11 @@
               <td value="top">
                 <table>
                   <tbody>
-                    <tr><td height="10"> <a href="/notice;no=2">List of shelters</a></td></tr>
+                    <tr>
+                      <td height="10">
+                        <a href="/notice;no=2">List of shelters</a>
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </td>
@@ -72,7 +80,11 @@
               <td value="top">
                 <table>
                   <tbody>
-                    <tr><td height="10"> <a href="/notice;no=1">Update</a></td></tr>
+                    <tr>
+                      <td height="10">
+                        <a href="/notice;no=1">Update</a>
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </td>
@@ -82,5 +94,12 @@
       </div>
     </div>
   </div>
+
+  <!-- Popup Script -->
+  <script>
+    function showPopup() {
+      alert("추후에 업데이트 예정입니다.");
+    }
+  </script>
 </body>
 </html>
