@@ -62,7 +62,7 @@
                   <tbody>
                     <tr>
                       <td height="10">
-                        <a href="/notice;no=2">List of shelters</a>
+                        <a href="/showtable.jsp">List of shelters</a>
                       </td>
                     </tr>
                   </tbody>
@@ -82,7 +82,7 @@
                   <tbody>
                     <tr>
                       <td height="10">
-                        <a href="/notice;no=1">Update</a>
+                        <a href="javascript:void(0)" onclick="showPopup()">Update</a>
                       </td>
                     </tr>
                   </tbody>
