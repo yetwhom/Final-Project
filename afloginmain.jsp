@@ -45,7 +45,7 @@
               <td value="top">
                 <table>
                   <tbody>
-                    <tr><td height="10"> <a href="/notice;no=3">재난 발생 시 대처 방법</a></td></tr>
+                    <tr><td height="10"> <a href="/Emergency.jsp">비상연락망 추가</a></td></tr>
                   </tbody>
                 </table>
               </td>
