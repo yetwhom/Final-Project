@@ -19,7 +19,7 @@
             <th>인원</th>
         </tr>
         <%-- DB 연결 변수들 --%>
-        <% String jdbcUrl = "jdbc:mysql://test-db.cipbbjwk95ru.ap-northeast-2.rds.amazonaws.com:3306/team3";
+        <% String jdbcUrl = "jdbc:mysql://masterdb.cjjvm5nexheu.ap-southeast-1.rds.amazonaws.com:3306/team3";
            String dbUser = "root";
            String dbPassword = "Qwer1234!";
            Connection conn = null;
