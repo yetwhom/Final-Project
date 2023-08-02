@@ -8,15 +8,6 @@
 <body>
   <div class="emergency-container">
     <h2>비상연락망 설정</h2>
-    <%-- 세션에 사용자 ID가 존재하면 로그아웃 버튼을 보여줌 --%>
-    <% if (session.getAttribute("userId") != null) { %>
-      <form method="post" action="<%=request.getContextPath()%>/Emergency.jsp?action=logout">
-        <button type="submit" class="logout-button">로그아웃</button>
-      </form>
-    <% } else { %>
-      <%-- 세션에 사용자 ID가 없으면 로그인 버튼을 보여줌 --%>
-      <a href="login.jsp" class="login-button">로그인</a>
-    <% } %>
 
     <%-- 비상연락망 전화번호 입력 폼 --%>
     <form method="post" action="<%=request.getContextPath()%>/Emergency.jsp">
@@ -25,6 +16,8 @@
         <input type="text" id="Emergency" name="Emergency" required>
       </div>
       <button type="submit" class="save-button">저장</button>
+      <%-- 이전으로 버튼을 클릭하면 afloginmain.jsp 페이지로 이동하도록 함 --%>
+      <a href="afloginmain.jsp" class="return-button">이전으로</a>
     </form>
 
     <%-- 비상연락망 전화번호를 데이터베이스에 저장하는 JSP 코드 시작 --%>
@@ -33,7 +26,7 @@
         String Emergency = request.getParameter("Emergency");
 
         // 세션에 저장된 사용자 ID 가져오기
-        String ID = (String) session.getAttribute("ID");
+        String userId = (String) session.getAttribute("userId");
 
         // 데이터베이스에 비상연락망 전화번호를 저장하는 로직 작성 (예시로는 user 테이블에 필드를 추가하여 저장하는 것으로 가정)
         try {
@@ -49,7 +42,7 @@
           String updateQuery = "UPDATE user SET Emergency=? WHERE ID=?";
           PreparedStatement updateStatement = connection.prepareStatement(updateQuery);
           updateStatement.setString(1, Emergency);
-          updateStatement.setString(2, ID);
+          updateStatement.setString(2, userId);
           updateStatement.executeUpdate();
 
           updateStatement.close();
@@ -61,14 +54,5 @@
     %>
     <%-- 비상연락망 전화번호를 데이터베이스에 저장하는 JSP 코드 끝 --%>
   </div>
-
-  <%-- 로그아웃 처리 JSP 코드 시작 --%>
-  <% if (request.getParameter("action") != null && request.getParameter("action").equals("logout")) {
-    // 로그아웃 처리: 세션 무효화 (로그아웃)
-    session.invalidate();
-    // index.jsp로 이동
-    response.sendRedirect("index.jsp");
-  } %>
-  <%-- 로그아웃 처리 JSP 코드 종료 --%>
 </body>
 </html>
