@@ -20,7 +20,7 @@
       <a href="afloginmain.jsp" class="return-button">Previous</a>
     </form>
 
-    <%-- JSP code to save emergency phone number to database --%>
+    <%-- Start JSP code to save emergency phone number to database --%>
     <%!
       void saveEmergencyPhoneNumber(String userId, String emergencyPhoneNumber) {
         try {
@@ -48,18 +48,56 @@
     %>
 
     <%
-      if (request.getMethod().equalsIgnoreCase("post")) {
-        String emergencyPhoneNumber = request.getParameter("Emergency");
+      // Get user ID stored in session
+      String userId = (String) session.getAttribute("userId");
 
-        // Get user ID stored in session
-        String userId = (String) session.getAttribute("userId");
+      // Get the current emergency phone number from the database
+      String currentEmergencyPhoneNumber = "";
 
-        // Save emergency phone number
-        saveEmergencyPhoneNumber(userId, emergencyPhoneNumber);
+      try {
+        // set RDS connection information
+        String dbURL = "jdbc:mysql://masterdb.cjjvm5nexheu.ap-southeast-1.rds.amazonaws.com:3306/team3";
+        String dbUser = "root"; // Modify with RDS user ID
+        String dbPassword = "Qwer1234!"; // modified with RDS user password
+
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection connection = DriverManager.getConnection(dbURL, dbUser, dbPassword);
+
+        // Retrieve the emergency phone number from the database
+        String selectQuery = "SELECT Emergency FROM user WHERE ID=?";
+        PreparedStatement selectStatement = connection.prepareStatement(selectQuery);
+        selectStatement.setString(1, userId);
+        ResultSet resultSet = selectStatement.executeQuery();
+
+        if (resultSet.next()) {
+          currentEmergencyPhoneNumber = resultSet.getString("Emergency");
+        }
+
+        resultSet.close();
+        selectStatement.close();
+        connection.close();
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
     %>
-      <p>Emergency contact phone number saved successfully!</p>
-    <% } %>
-    <%-- end of JSP code to save emergency phone number to database --%>
+
+    <script>
+      // Set the current emergency phone number as the initial value in the input field
+      document.addEventListener('DOMContentLoaded', function() {
+        var emergencyInput = document.getElementById('Emergency');
+        emergencyInput.value = '<%= currentEmergencyPhoneNumber %>';
+      });
+    </script>
+
+    <%-- end of JSP code to retrieve current emergency phone number from database --%>
+
+    <%-- Save the modified emergency phone number --%>
+    <% if (request.getMethod().equalsIgnoreCase("post")) {
+      String emergencyPhoneNumber = request.getParameter("Emergency");
+      saveEmergencyPhoneNumber(userId, emergencyPhoneNumber);
+    } %>
+    <%-- End of JSP code to save emergency phone number to database --%>
+
   </div>
 </body>
 </html>
