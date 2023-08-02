@@ -2,11 +2,11 @@ FROM ubuntu:20.04
 LABEL maintainer="Simple Nginx-Tomcat WAS Service"
 RUN apt-get update && apt-get install -y openjdk-8-jdk wget
 WORKDIR /tmp
-RUN wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.76/bin/apache-tomcat-9.0.76.tar.gz -O /tmp/tomcat.tar.gz
+RUN wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.78/bin/apache-tomcat-9.0.78.tar.gz -O /tmp/tomcat.tar.gz
 RUN tar xvfz tomcat.tar.gz
 RUN mkdir /usr/local/tomcat
 RUN mkdir /usr/local/tomcat/webapps/ROOT/backend/
-RUN mv /tmp/apache-tomcat-9.0.76/* /usr/local/tomcat/
+RUN mv /tmp/apache-tomcat-9.0.78/* /usr/local/tomcat/
 RUN rm -rf /tmp/apache* /tmp/tomcat.tar.gz
 COPY cardata.jsp /usr/local/tomcat/webapps/ROOT/backend/
 COPY context.xml /usr/local/tomcat/conf/
