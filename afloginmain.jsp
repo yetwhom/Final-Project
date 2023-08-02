@@ -77,7 +77,7 @@
               <td value="top">
                 <table>
                   <tbody>
-                    <tr><td height="10"> <a href="/notice;no=1">Update</a></td></tr>
+                    <tr><td height="10"> <a href="/showinfo.jsp">Update</a></td></tr>
                   </tbody>
                 </table>
               </td>
