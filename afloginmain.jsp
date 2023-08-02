@@ -61,7 +61,7 @@
               <td value="top">
                 <table>
                   <tbody>
-                    <tr><td height="10"> <a href="/notice;no=2">대피소 목록</a></td></tr>
+                    <tr><td height="10"> <a href="/showtable.jsp">대피소 목록</a></td></tr>
                   </tbody>
                 </table>
               </td>
