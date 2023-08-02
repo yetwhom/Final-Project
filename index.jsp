@@ -13,7 +13,9 @@
         <img src="2.png" alt="logo image">
       </a>
       <!-- 로그인 버튼 클릭 시 login.jsp로 이동 -->
-      <a href="login.jsp" class="login-button">Login</a>
+      <div style="position: absolute; top: 0; right: 0; height: 100%; display: flex; align-items: center; padding-right: 20px;">
+        <a href="login.jsp" class="login-button">Login</a>
+      </div>
     </div>
 
     <!-- split top 70% horizontally -->
