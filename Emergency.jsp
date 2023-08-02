@@ -13,7 +13,7 @@
     <form method="post" action="<%=request.getContextPath()%>/Emergency.jsp">
       <div class="form-group">
         <label for="Emergency">Phone Number:</label>
-        <input type="text" id="Emergency" name="Emergency" required>
+        <input type="text" id="Emergency" name="Emergency" value="<%= currentEmergencyPhoneNumber %>" required>
       </div>
       <button type="submit" class="save-button">Save</button>
       <%-- Click the Back button to go to the afloginmain.jsp page --%>
@@ -80,16 +80,6 @@
         e.printStackTrace();
       }
     %>
-
-    <script>
-      // Set the current emergency phone number as the initial value in the input field
-      document.addEventListener('DOMContentLoaded', function() {
-        var emergencyInput = document.getElementById('Emergency');
-        emergencyInput.value = '<%= currentEmergencyPhoneNumber %>';
-      });
-    </script>
-
-    <%-- end of JSP code to retrieve current emergency phone number from database --%>
 
     <%-- Save the modified emergency phone number --%>
     <% if (request.getMethod().equalsIgnoreCase("post")) {
