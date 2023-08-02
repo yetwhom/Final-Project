@@ -20,10 +20,9 @@
       <a href="afloginmain.jsp" class="return-button">Previous</a>
     </form>
 
-    <%-- Start JSP code to save emergency phone number to database --%>
+    <%-- JSP code to save emergency phone number to database --%>
     <%!
       void saveEmergencyPhoneNumber(String userId, String emergencyPhoneNumber) {
-        // Develop logic to save emergency contact phone number in database (As an example, it is assumed that a field is added and stored in the user table)
         try {
           // set RDS connection information
           String dbURL = "jdbc:mysql://masterdb.cjjvm5nexheu.ap-southeast-1.rds.amazonaws.com:3306/team3";
@@ -57,8 +56,9 @@
 
         // Save emergency phone number
         saveEmergencyPhoneNumber(userId, emergencyPhoneNumber);
-      }
     %>
+      <p>Emergency contact phone number saved successfully!</p>
+    <% } %>
     <%-- end of JSP code to save emergency phone number to database --%>
   </div>
 </body>
