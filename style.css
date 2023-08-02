@@ -78,6 +78,10 @@ body, html {
   /* 로그아웃 버튼 스타일 조정 */
   .logout-button {
     position: absolute; /* 절대 위치를 설정하기 위해 추가 */
-    top: 5px; /* 오른쪽 모서리에서 위쪽으로 5px만큼 띄우기 */
-    right: 10
+    top: 5px; /* 오른쪽 상단에서 위쪽으로 5px만큼 띄우기 */
+    right: 10px; /* 오른쪽 상단에서 오른쪽으로 10px만큼 띄우기 */
+    padding: 5px 10px; /* 버튼 내용에 맞춰 크기 조정 */
+    font-size: 16px;
+    line-height: 20px; /* 버튼 내용에 맞춰 크기 조정 */
+  }
   
