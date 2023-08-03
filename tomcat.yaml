@@ -18,7 +18,7 @@ spec:
         app: tomcat
     spec:
       containers:
-      - image: tomcat
+      - image: ghcr.io/yetwhom/tomcat:1.0
         name: tomcat
         resources: {}
 status: {}
