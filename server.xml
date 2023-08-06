@@ -43,7 +43,7 @@
             description="team3 Database Connection"
             username="root" password="Qwer1234!"
             driverClassName="com.mysql.jdbc.Driver"
-            url="jdbc:mysql://masterdb.cjjvm5nexheu.ap-southeast-1.rds.amazonaws.com:3306/team3"
+            url="jdbc:mysql://masterdb.cipbbjwk95ru.ap-northeast-2.rds.amazonaws.com:3306/team3"
             maxTotal="100" maxIdle="30" maxWaitMillis="10000" />
   </GlobalNamingResources>
 
