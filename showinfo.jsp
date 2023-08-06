@@ -16,7 +16,7 @@
       String userId = (String) session.getAttribute("userId");
 
       // Set RDS connection information
-      String dbURL = "jdbc:mysql://masterdb.cjjvm5nexheu.ap-southeast-1.rds.amazonaws.com:3306/team3";
+      String dbURL = "jdbc:mysql://masterdb.cipbbjwk95ru.ap-northeast-2.rds.amazonaws.com:3306/team3";
       String dbUser = "root"; // Modify with RDS user ID
       String dbPassword = "Qwer1234!"; // Modified with RDS user password
 
