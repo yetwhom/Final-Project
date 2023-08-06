@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: back-tomcat-deploy
+  name: back-tomcat-deploy
+  namespace: back-end
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: back-tomcat-deploy
+  template:
+    metadata:
+      labels:
+        app: back-tomcat-deploy
+    spec:
+      containers:
+      - image: ghcr.io/yetwhom/tomcat:1.0
+        name: tomcat
+        ports:
+        - containerPort: 8080
