@@ -9,7 +9,7 @@
   <div class="container">
     <!-- Top 10% -->
     <div class="box box-1">
-      <a href="main.html">
+      <a href="admin.jsp">
         <img src="2.png" alt="logo image">
       </a>
       <%-- Show logout button if user ID exists in session --%>
