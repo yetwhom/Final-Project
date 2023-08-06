@@ -27,7 +27,7 @@
   <%
     if (request.getMethod().equalsIgnoreCase("post")) {
       // RDS 연결 정보 설정
-      String dbURL = "jdbc:mysql://masterdb.cjjvm5nexheu.ap-southeast-1.rds.amazonaws.com:3306/team3";
+      String dbURL = "jdbc:mysql://masterdb.cipbbjwk95ru.ap-northeast-2.rds.amazonaws.com:3306/team3";
       String dbUser = "root"; // RDS 사용자 ID로 수정
       String dbPassword = "Qwer1234!"; // RDS 사용자 비밀번호로 수정
 
