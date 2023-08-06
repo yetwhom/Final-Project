@@ -9,7 +9,7 @@
   <div class="container">
     <!-- Top 10% -->
     <div class="box box-1">
-      <a href="main.html">
+      <a href="afloginmain.jsp">
         <img src="2.png" alt="logo image">
       </a>
       <%-- Show logout button if user ID exists in session --%>
@@ -77,7 +77,7 @@
               <td value="top">
                 <table>
                   <tbody>
-                    <tr><td height="10"> <a href="/showinfo.jsp">Update</a></td></tr>
+                    <tr><td height="10"> <a href="/showinfo.jsp">my info</a></td></tr>
                   </tbody>
                 </table>
               </td>
