@@ -16,7 +16,7 @@ spec:
         app: test-web-tomcat
     spec:
       containers:
-      - image: ghcr.io/yetwhom/tomcat-final:admin
+      - image: ghcr.io/yetwhom/tomcat-final:1.0
         name: tomcat
         ports:
         - containerPort: 8080
