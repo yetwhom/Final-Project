@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: test-web-tomcat
+  name: test-web-tomcat
+  namespace: test-web
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: test-web-tomcat
+  template:
+    metadata:
+      labels:
+        app: test-web-tomcat
+    spec:
+      containers:
+      - image: ghcr.io/yetwhom/tomcat:1.0
+        name: tomcat
+        ports:
+        - containerPort: 8080
