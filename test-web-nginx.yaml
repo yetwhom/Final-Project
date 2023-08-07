@@ -16,7 +16,7 @@ spec:
         app: test-web-nginx
     spec:
       containers:
-      - image: ghcr.io/yetwhom/nginx:1.4
+      - image: ghcr.io/yetwhom/nginx-final:1.0
         name: nginx
         ports:
         - containerPort: 80
