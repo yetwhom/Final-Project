@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 kubectl apply -f test-web-nginx.yaml
 
