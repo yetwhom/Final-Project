@@ -6,7 +6,7 @@ metadata:
   name: test-web-nginx
   namespace: test-web
 spec:
-  replicas: 4
+  replicas: 3
   selector:
     matchLabels:
       app: test-web-nginx
