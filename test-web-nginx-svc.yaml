@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: test-web-nginx
+  name: test-web-nginx-svc
+  namespace: test-web
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: test-web-nginx
+  type: LoadBalancer
+status:
+  loadBalancer: {}

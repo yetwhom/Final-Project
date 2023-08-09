@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: test-web-nginx
+  name: test-web-nginx
+  namespace: test-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-web-nginx
+  template:
+    metadata:
+      labels:
+        app: test-web-nginx
+    spec:
+      containers:
+      - image: ghcr.io/yetwhom/nginx-final:1.0
+        name: nginx
+        ports:
+        - containerPort: 80
