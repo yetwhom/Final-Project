@@ -1,13 +1,13 @@
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: test-web--hpa
+  name: test-web-hpa-1
   namespace: test-web
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: test-web-tomcat
+    name: test-web-nginx
   minReplicas: 3
-  maxReplicas: 6
-  targetCPUUtilizationPercentage: 40
+  maxReplicas: 8
+  targetCPUUtilizationPercentage: 50
