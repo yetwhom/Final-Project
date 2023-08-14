@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: mirroring
+  name: mirroring-nginx-web
+  annotations: {}
+spec:
+  selector:
+    matchLabels:
+      app: mirroring-nginx-web
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: mirroring-nginx-web
+    spec:
+      containers:
+        - name: container
+          image: >-
+            028954022636.dkr.ecr.ap-northeast-2.amazonaws.com/application:nginx1.0
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env: []
+      imagePullSecrets: []
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  paused: false
